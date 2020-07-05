@@ -1,0 +1,25 @@
+{
+  "name": "vite-react-dva-typescript-starter",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "@pika/react": "^16.13.1",
+    "@pika/react-dom": "^16.13.1",
+    "dva": "^2.6.0-beta.20",
+    "dva-core": "^2.0.2",
+    "dva-loading": "^3.0.20",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "typescript": "^3.9.3",
+    "vite": "^1.0.0-beta.10",
+    "vite-plugin-react": "^3.0.0"
+  }
+}

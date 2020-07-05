@@ -1,0 +1,40 @@
+html, body {
+  background: var(--black);
+  color: #fff;
+  height: 100%;
+}
+
+nav {
+  list-style: none;
+}
+nav li {
+  display: inline-block;
+}
+nav li a {
+  background: var(--green);
+}
+
+button, a {
+  display: inline-block;
+  background: var(--theme-primary);
+  padding: 0 10px;
+  height: 30px;
+  line-height: 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 5px;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 18px !important;
+}
+
+.main {
+  padding: 10px;
+}
