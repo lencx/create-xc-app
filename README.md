@@ -44,6 +44,13 @@ To scaffold with specific template:
 $ npm init lx-cli my-react-project --template react-dva-ts
 ```
 
-## Powered By
+## Related List
 
-- [Vite](https://github.com/vitejs/vite)
+- [Vite](https://github.com/vitejs/vite): Native-ESM powered web dev build tool. It's fast.
+- [Dvajs](https://github.com/dvajs/dva): React and redux based, lightweight and elm-style framework.
+- [Deno](https://deno.land): A secure runtime for JavaScript and TypeScript.
+- [Oak](https://github.com/oakserver/oak): A middleware framework for Deno's net server 🦕.
+
+## License
+
+MIT
