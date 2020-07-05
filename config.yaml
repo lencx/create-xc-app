@@ -1,0 +1,7 @@
+defaultTemplate: react-dva-ts
+
+CMD:
+  Vite:
+    react-dva-ts: React and Dvajs based.
+  # Deno:
+    # deno: deno and oak
