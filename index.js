@@ -27,7 +27,13 @@ function readCmd(config) {
 }
 
 async function init() {
-  const confFile = await fs.readFile(path.join(__dirname, 'config.yaml'), 'utf8');
+  const rootFiles = await fs.readdir(__dirname);
+  let confFile;
+  for (const file of rootFiles) {
+    if (file === 'config.yaml') {
+      confFile = await fs.readFile(file, 'utf8');
+    }
+  }
   const conf = yaml.parse(confFile);
 
   const _argv = argv._[0];
@@ -35,10 +41,10 @@ async function init() {
     if (argv.h || argv.help) {
       console.log(`\nCommand Help:`);
       console.log(`\nUsage:`);
-      console.log(`  ${green(`npm init lx-app <project-name> <-t|--template> [Options]`)}`);
+      console.log(`  ${green(`npm init lx-cli <project-name> <-t|--template> [Options]`)}`);
       console.log(`  or`);
-      console.log(`  ${green(`yarn create lx-app <project-name> <-t|--template> [Options]`)}`);
-      console.log(`\nExample: ${green(`npm init lx-app myapp -t react-dva-ts`)}`);
+      console.log(`  ${green(`yarn create lx-cli <project-name> <-t|--template> [Options]`)}`);
+      console.log(`\nExample: ${green(`npm init lx-cli myapp -t react-dva-ts`)}`);
       console.log(`\nOptions:\n${readCmd(conf)}`);
     } else {
       console.log(`\n${red('Error:')}\n  See '${green('npx create-lx-cli -h')}' for more information on command.`);
