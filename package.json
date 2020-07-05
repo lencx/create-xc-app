@@ -1,6 +1,6 @@
 {
   "name": "create-lx-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "lencx <cxin1314@gmail.com>",
   "main": "index.js",

@@ -6,8 +6,9 @@ const chalk = require('chalk');
 const yaml = require('yaml');
 
 const { green, bgBlue, red, magenta } = chalk;
+const cwd = process.cwd();
 
-const confFile = fs.readFileSync('./config.yaml', 'utf8');
+const confFile = fs.readFileSync(path.join(cwd, './config.yaml'), 'utf8');
 const conf = yaml.parse(confFile);
 
 function readCmd() {
@@ -34,15 +35,18 @@ async function init() {
   if (!_argv) {
     if (argv.h || argv.help) {
       console.log(`\ncommand help:`);
+      console.log(`\nRun:`);
       console.log(`  ${green(`npm init lx-app <project-name> <-t|--template> [Options]`)}`);
+      console.log(`  or`);
+      console.log(`  ${green(`yarn create lx-app <project-name> <-t|--template> [Options]`)}`);
+      console.log(`\nExample: ${green(`npm init lx-app myapp -t react-dva-ts`)}`);
       console.log(`\nOptions:\n${readCmd()}`);
     } else {
-      console.log(`\n${red('Error:')}\n  See '${green('npm init lx-cli -h')}' for more information on command.`);
+      console.log(`\n${red('Error:')}\n  See '${green('npx create-lx-cli -h')}' for more information on command.`);
     }
     process.exit(1);
   }
   const targetDir = argv._[0] || '.';
-  const cwd = process.cwd();
   const root = path.join(cwd, targetDir);
   const renameFiles = {
     _gitignore: '.gitignore',

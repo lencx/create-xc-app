@@ -1,6 +1,11 @@
 # create-lx-cli
 
-> Create an project in seconds!
+Create an project in seconds!
+
+```bash
+# command help
+$ npx create-lx-cli -h
+```
 
 ```bash
 $ npm init lx-cli <project-name> <-t|--template> [template]
