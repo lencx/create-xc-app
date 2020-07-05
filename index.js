@@ -6,9 +6,8 @@ const chalk = require('chalk');
 const yaml = require('yaml');
 
 const { green, bgBlue, red, magenta } = chalk;
-const cwd = process.cwd();
 
-const confFile = fs.readFileSync(path.join(cwd, './config.yaml'), 'utf8');
+const confFile = fs.readFileSync(path.join(__dirname, 'config.yaml'), 'utf8');
 const conf = yaml.parse(confFile);
 
 function readCmd() {
@@ -34,8 +33,8 @@ async function init() {
   const _argv = argv._[0];
   if (!_argv) {
     if (argv.h || argv.help) {
-      console.log(`\ncommand help:`);
-      console.log(`\nRun:`);
+      console.log(`\nCommand Help:`);
+      console.log(`\nUsage:`);
       console.log(`  ${green(`npm init lx-app <project-name> <-t|--template> [Options]`)}`);
       console.log(`  or`);
       console.log(`  ${green(`yarn create lx-app <project-name> <-t|--template> [Options]`)}`);
@@ -47,6 +46,7 @@ async function init() {
     process.exit(1);
   }
   const targetDir = argv._[0] || '.';
+  const cwd = process.cwd();
   const root = path.join(cwd, targetDir);
   const renameFiles = {
     _gitignore: '.gitignore',
