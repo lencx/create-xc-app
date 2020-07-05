@@ -12,9 +12,6 @@
     "index.js",
     "template-*"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lencx/create-lx-cli.git"
