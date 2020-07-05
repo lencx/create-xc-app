@@ -1,7 +1,0 @@
-defaultTemplate: react-dva-ts
-
-CMD:
-  Vite:
-    react-dva-ts: Build apps based on React, Dvajs and TypeScript.
-  # Deno:
-    # deno: deno and oak

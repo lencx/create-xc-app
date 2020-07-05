@@ -3,12 +3,20 @@ const path = require('path');
 const fs = require('fs-extra');
 const argv = require('minimist')(process.argv.slice(2));
 const chalk = require('chalk');
-const yaml = require('yaml');
 
-const { green, bgBlue, red, magenta } = chalk;
+const { green, red, magenta } = chalk;
 
-function readCmd(config) {
-  const cmdItem = (cmd, info) => `\n   ${green(cmd)}${' '.repeat(20 - cmd.length)}${info}`;
+const config = {
+  defaultTemplate: 'react-dva-ts',
+  CMD: {
+    Vite: {
+      'react-dva-ts': 'Build apps based on React, Dvajs and TypeScript.'
+    }
+  }
+};
+
+const cmdItem = (cmd, info) => `\n   ${green(cmd)}${' '.repeat(20 - cmd.length)}${info}`;
+function readCmd(conf) {
 
   const cmdParse = (cmds) => {
     let str = '';
@@ -23,29 +31,20 @@ function readCmd(config) {
     })
     return str;
   }
-  return cmdParse(config.CMD);
+  return cmdParse(conf.CMD);
 }
 
 async function init() {
-  const rootFiles = await fs.readdir(__dirname);
-  let confFile;
-  for (const file of rootFiles) {
-    if (file === 'config.yaml') {
-      confFile = await fs.readFile(file, 'utf8');
-    }
-  }
-  const conf = yaml.parse(confFile);
-
   const _argv = argv._[0];
   if (!_argv) {
     if (argv.h || argv.help) {
-      console.log(`\nCommand Help:`);
+      console.log(`${magenta('[lx-cli]')} Command Help:`);
       console.log(`\nUsage:`);
       console.log(`  ${green(`npm init lx-cli <project-name> <-t|--template> [Options]`)}`);
       console.log(`  or`);
       console.log(`  ${green(`yarn create lx-cli <project-name> <-t|--template> [Options]`)}`);
       console.log(`\nExample: ${green(`npm init lx-cli myapp -t react-dva-ts`)}`);
-      console.log(`\nOptions:\n${readCmd(conf)}`);
+      console.log(`\nOptions:\n${readCmd(config)}`);
     } else {
       console.log(`\n${red('Error:')}\n  See '${green('npx create-lx-cli -h')}' for more information on command.`);
     }
@@ -68,7 +67,7 @@ async function init() {
 
   const templateDir = path.join(
     __dirname,
-    `template-${argv.t || argv.template || conf.defaultTemplate}`
+    `template-${argv.t || argv.template || config.defaultTemplate}`
   );
   const write = async (file, content) => {
     const targetPath = renameFiles[file]
