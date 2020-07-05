@@ -27,11 +27,15 @@ $ yarn dev # run project
 
 ## Templates
 
-Available templates:
+Available templates: default is `react-dva-ts`
 
 > `Vite`
 
-- `react-dva-ts` (default)
+- `react-dva-ts`: Build apps based on React, Dvajs and TypeScript.
+
+> Deno
+
+- `deno-oak`: Creating a basic web server in Deno using Oak.
 
 To scaffold with specific template:
 
