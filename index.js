@@ -10,14 +10,16 @@ const config = {
   defaultTemplate: 'react-dva-ts',
   CMD: {
     Vite: {
-      'react-dva-ts': 'Build apps based on React, Dvajs and TypeScript.'
+      'react-dva-ts': `Build apps based on React, Dvajs and TypeScript.`
+    },
+    Deno: {
+      'deno-oak': `Creating a basic web server in Deno using Oak`
     }
   }
 };
 
-const cmdItem = (cmd, info) => `\n   ${green(cmd)}${' '.repeat(20 - cmd.length)}${info}`;
 function readCmd(conf) {
-
+  const cmdItem = (cmd, info) => `\n   ${green(cmd)}${' '.repeat(20 - cmd.length)}${info}`;
   const cmdParse = (cmds) => {
     let str = '';
     Object.keys(cmds).forEach(c => {
