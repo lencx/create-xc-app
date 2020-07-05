@@ -13,7 +13,8 @@ const config = {
       'react-dva-ts': `Build apps based on React, Dvajs and TypeScript.`
     },
     Deno: {
-      'deno-oak': `Creating a basic web server in Deno using Oak.`
+      'deno-oak': `Creating a basic web server in Deno using Oak.`,
+      'deno-vscode-cmd': 'Based `deno` and `vscode user snippets`, displaying all `"@cmd: "` commands in the project.',
     }
   }
 };
@@ -37,14 +38,14 @@ function readCmd(conf) {
 }
 
 async function init() {
-  const _argv = argv._[0];
-  if (!_argv) {
+  const _argv0 = argv._[0];
+  if (!_argv0) {
     if (argv.h || argv.help) {
       console.log(`${magenta('[lx-cli]')} Command Help:`);
       console.log(`\nUsage:`);
-      console.log(`  ${green(`npm init lx-cli <project-name> <-t|--template> [Options]`)}`);
+      console.log(`  ${green(`npm init lx-cli <project-name> <-t|--template> [Options] [--force]`)}`);
       console.log(`  or`);
-      console.log(`  ${green(`yarn create lx-cli <project-name> <-t|--template> [Options]`)}`);
+      console.log(`  ${green(`yarn create lx-cli <project-name> <-t|--template> [Options] [--force]`)}`);
       console.log(`\nExample: ${green(`npm init lx-cli myapp -t react-dva-ts`)}`);
       console.log(`\nOptions:\n${readCmd(config)}`);
     } else {
@@ -52,7 +53,7 @@ async function init() {
     }
     process.exit(1);
   }
-  const targetDir = argv._[0] || '.';
+  const targetDir = _argv0 || '.';
   const cwd = process.cwd();
   const root = path.join(cwd, targetDir);
   const renameFiles = {
@@ -62,7 +63,8 @@ async function init() {
 
   await fs.ensureDir(root);
   const existing = await fs.readdir(root);
-  if (existing.length) {
+
+  if (existing.length && !argv.force) {
     console.error(`Error: target directory is not empty.`);
     process.exit(1);
   }
@@ -92,18 +94,17 @@ async function init() {
     }
   }
 
-  console.log(`\nDone. Now run:\n`);
-  if (root !== cwd) {
-    console.log(`  cd ${path.relative(cwd, root)}`);
+  console.log(`\n✨Done!`);
+  if (root !== cwd && !/^\.\/?$/.test(targetDir)) {
+    console.log(`\nNow Run:\n$ ${green(`cd ${path.relative(cwd, root)}`)}`);
   }
   if (hasPkg) {
     const pkg = require(path.join(templateDir, `package.json`));
     pkg.name = path.basename(root);
     await write('package.json', JSON.stringify(pkg, null, 2));
 
-    console.log(`  npm install (or \`yarn\`)`);
-    console.log(`  npm run dev (or \`yarn dev\`)`);
-    console.log();
+    console.log(`$ ${green('npm install')} (or ${green('yarn')})`);
+    console.log(`$ ${green('npm run dev')} (or ${green('yarn dev')})\n`);
   }
 }
 

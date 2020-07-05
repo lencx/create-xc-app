@@ -8,27 +8,36 @@ $ npx create-lx-cli -h
 ```
 
 ```bash
-$ npm init lx-cli <project-name> <-t|--template> [template]
+# project-name: target directory
+# Options: template options
+# --force: even if the target directory is not empty, it is mandatory to create a template.
+$ npm init lx-cli <project-name> <-t|--template> [Options] [--force]
 $ cd <project-name>
 # if the project has a package.json
 $ npm install # install dependencies
 $ npm run dev # run project
 ```
 
-If using Yarn:
+If using `yarn`:
 
 ```bash
-$ yarn create lx-cli <project-name> <-t|--template> [template]
+$ yarn create lx-cli <project-name> <-t|--template> [Options] [--force]
 $ cd <project-name>
 # if the project has a package.json
 $ yarn # install dependencies
 $ yarn dev # run project
 ```
 
+If using `npx`:
+
+```bash
+$ npx create-lx-cli <project-name> <-t|--template> [Options] [--force]
+# ...
+```
+
 ## Templates
 
 Available templates: default is `react-dva-ts`
-
 > `Vite`
 
 - `react-dva-ts`: Build apps based on React, Dvajs and TypeScript.
@@ -36,8 +45,8 @@ Available templates: default is `react-dva-ts`
 > Deno
 
 - `deno-oak`: Creating a basic web server in Deno using Oak.
-- `deno-vscode-cmd`: Based `deno` and `vscode user snippets`, displaying all `"@cmd: "` commands in the project
-  - `snippets` must contain `"@cmd: "` string.
+- `deno-vscode-cmd`: Based `deno` and `vscode user snippets`, displaying all `"@cmd: "` commands in the project.
+  - `snippets` must contain `"@cmd: "` string
   - the string must be in the first 10 lines of the file will be matched
   - `$ deno run --allow-read --allow-write cmd.ts` - use cache `cmd.output`
   - `$ deno run --allow-read --allow-write cmd.ts --update` - update `cmd.output` file
@@ -46,8 +55,9 @@ Available templates: default is `react-dva-ts`
 To scaffold with specific template:
 
 ```bash
-# or `npm init lx-cli my-react-project`
+# default template: `npm init lx-cli my-react-project`
 $ npm init lx-cli my-react-project --template react-dva-ts
+$ npm init lx-cli . --template deno-vscode-cmd --force # force
 ```
 
 ## Related List
