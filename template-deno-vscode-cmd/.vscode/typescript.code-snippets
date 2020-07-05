@@ -1,0 +1,25 @@
+{
+	"author & create_at": {
+		"prefix": "lc",
+		"body": [
+			"/**",
+			" * @author: lencx",
+			" * @create_at: $CURRENT_MONTH_NAME_SHORT $CURRENT_DATE, $CURRENT_YEAR",
+			" */",
+			"",
+			"$2"
+		]
+	},
+	"author & create_at & cmd": {
+		"prefix": "lcc",
+		"body": [
+			"/**",
+			" * @author: lencx",
+			" * @create_at: $CURRENT_MONTH_NAME_SHORT $CURRENT_DATE, $CURRENT_YEAR",
+			" * @cmd: deno run$1 $TM_FILENAME",
+			" */",
+			"",
+			"$2"
+		]
+	},
+}
