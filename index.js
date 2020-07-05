@@ -7,10 +7,7 @@ const yaml = require('yaml');
 
 const { green, bgBlue, red, magenta } = chalk;
 
-const confFile = fs.readFileSync(path.join(__dirname, 'config.yaml'), 'utf8');
-const conf = yaml.parse(confFile);
-
-function readCmd() {
+function readCmd(config) {
   const cmdItem = (cmd, info) => `\n   ${green(cmd)}${' '.repeat(20 - cmd.length)}${info}`;
 
   const cmdParse = (cmds) => {
@@ -26,10 +23,13 @@ function readCmd() {
     })
     return str;
   }
-  return cmdParse(conf.CMD);
+  return cmdParse(config.CMD);
 }
 
 async function init() {
+  const confFile = await fs.readFile(path.join(__dirname, 'config.yaml'), 'utf8');
+  const conf = yaml.parse(confFile);
+
   const _argv = argv._[0];
   if (!_argv) {
     if (argv.h || argv.help) {
@@ -39,7 +39,7 @@ async function init() {
       console.log(`  or`);
       console.log(`  ${green(`yarn create lx-app <project-name> <-t|--template> [Options]`)}`);
       console.log(`\nExample: ${green(`npm init lx-app myapp -t react-dva-ts`)}`);
-      console.log(`\nOptions:\n${readCmd()}`);
+      console.log(`\nOptions:\n${readCmd(conf)}`);
     } else {
       console.log(`\n${red('Error:')}\n  See '${green('npx create-lx-cli -h')}' for more information on command.`);
     }
