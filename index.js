@@ -38,8 +38,8 @@ function readCmd(conf) {
 }
 
 const cmdHelp = () => `
-${magenta('[lx-cli]')} Command Help:
-See: https://github.com/lencx/create-lx-cli
+Command Help:
+${magenta('[lx-cli]')}: https://github.com/lencx/create-lx-cli
 
 Usage:
   ${green(`npm init lx-cli <project-name> <-t|--template> [Options] [--force]`)}
