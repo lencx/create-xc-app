@@ -3,26 +3,36 @@
  * @create_at: Jul 04, 2020
  */
 
-// @ts-nocheck
+// @ts-ignore
 import { create } from 'dva-core';
+// @ts-ignore
 import createLoading from 'dva-loading';
+import { Model, Dispatch, DvaInstance } from 'dva';
 
-let app: any;
-let store: any;
-let dispatch: any;
-let registered: any;
+export interface DvaOption {
+  initialState: object;
+  models: Model[];
+}
 
-function createApp(opt: any) {
-  app = create(opt);
+export type DvaApp = DvaInstance & {
+  _store: any;
+  getStore: () => any;
+  dispatch: Dispatch<any>;
+}
+
+export default function createApp(opt: DvaOption): DvaApp {
+  const app: DvaApp = create(opt);
+  let registered: boolean = false;
+
   app.use(createLoading({}));
 
   if (!registered) {
-    opt.models.forEach((model: any) => app.model(model));
+    opt.models.forEach((model: Model) => app.model(model));
   }
   registered = true;
   app.start();
 
-  store = app._store;
+  const store: any = app._store;
   app.getStore = () => store;
   app.use({
     onError(err: Error){
@@ -30,14 +40,6 @@ function createApp(opt: any) {
     }
   });
 
-  dispatch = store.dispatch;
-  app.dispatch = dispatch;
+  app.dispatch = store.dispatch;
   return app;
-}
-
-export default {
-  createApp,
-  getDispatch() {
-    return app.dispatch;
-  },
 }

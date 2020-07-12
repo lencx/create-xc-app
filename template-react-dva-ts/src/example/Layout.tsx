@@ -3,30 +3,33 @@ import { Link } from 'react-router-dom';
 import { connect } from 'dva';
 
 import Router from '/@route/Router';
+import { RouteOption } from '/@route/types';
 import './style.css';
 
-function Layout(props: any) {
+interface LayoutProps {
+  authenticated: boolean;
+  routes: RouteOption[];
+}
+
+function Layout(props: LayoutProps) {
+  const authenticated = props.authenticated;
   return (
     <div className="app">
       <nav>
         <li>
-          {props.authenticated
-            ? <Link to='/signout'> Sign Out </Link>
-            : <Link to='/login'> Login </Link>}
+          {authenticated
+            ? <Link to='/example/signout'> Sign Out Page </Link>
+            : <Link to='/example/login'> Login Page </Link>}
         </li>
-        <li><Link to='/protected'> Protected </Link></li>
+        <li><Link to='/example/protected'> Protected Page </Link></li>
       </nav>
       <div className='main'>
-        <Router
-          routes={props.routes}
-          store={{
-            authenticated: props.authenticated,
-            dispatch: props.dispatch,
-          }}
-        />
+        <Router routes={props.routes} />
       </div>
     </div>
   )
 }
 
-export default connect((state: any) => state.global)(Layout)
+export default connect((state: any) => ({
+  authenticated: state.global.authenticated,
+}))(Layout)

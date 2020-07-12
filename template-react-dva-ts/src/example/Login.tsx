@@ -1,19 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-export default function Login(props: any) {
+export default function Login() {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const handleLogin = () => {
-    props.store.dispatch({
+    dispatch({
       type: 'global/setState',
       payload: { authenticated: true },
     })
-    props.history.push('/protected');
+    history.push('/example/protected');
   }
   return (
     <div>
       <h1>Login Page</h1>
       <button onClick={handleLogin}>Login</button>
-      <Link to="/">Back To Home</Link>
+      <Link to="/example">Back To Home</Link>
     </div>
   )
 }

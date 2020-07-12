@@ -3,23 +3,26 @@
  * @create_at: Jul 04, 2020
  */
 
-// @ts-nocheck
-import React, { StrictMode } from 'react';
+import React, { StrictMode, lazy } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import dva from '/@core/dva';
-import Router from '/@route/Router';
+import createApp from '/@core/dva';
+import Router, { RouteOption } from '/@route/Router';
 import models from '/@/models';
 
-const dvaApp = dva.createApp({
+const dvaApp = createApp({
   initialState: {},
   models,
 });
 
 const store = dvaApp.getStore();
 
-export default function InitApp({ routes }) {
+interface InitAppProps {
+  routes: RouteOption[];
+}
+
+export default function InitApp({ routes }: InitAppProps) {
   return (
     <React.StrictMode>
       <Provider store={store}>

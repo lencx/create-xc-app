@@ -16,14 +16,3 @@ export interface RouteOption {
   // if router is private, this is going to be true
   private?: boolean;
 }
-
-export interface RouterProps {
-  routes: RouteOption[];
-  store?: {
-    [key: string]: any;
-  };
-}
-
-export interface RouteWithSubRoutesProps extends RouteOption {
-  store?: { [key: string]: string };
-}

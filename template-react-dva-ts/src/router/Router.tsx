@@ -2,14 +2,19 @@ import React from 'react';
 import { Switch } from 'react-router-dom';
 
 import RouteWithSubRoutes from './RouteWithSubRoutes';
-import { RouteOption, RouterProps } from './types';
+import { RouteOption } from './types';
 
-const Router: React.FC<RouterProps> = ({ routes, store = {} }) => {
+export interface RouterProps {
+  routes: RouteOption[];
+}
+
+const Router: React.FC<RouterProps> = ({ routes }) => {
   return (
     <Switch>
-      {routes && routes.map((route: RouteOption) => <RouteWithSubRoutes key={route.path} {...route} store={store} />)}
+      {routes.map((route: RouteOption) => <RouteWithSubRoutes key={route.path} {...route} />)}
     </Switch>
   );
 };
 
 export default Router;
+export { RouteOption };
