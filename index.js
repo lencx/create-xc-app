@@ -37,17 +37,24 @@ function readCmd(conf) {
   return cmdParse(conf.CMD);
 }
 
+const cmdHelp = () => `
+${magenta('[lx-cli]')} Command Help:
+See: https://github.com/lencx/create-lx-cli
+
+Usage:
+  ${green(`npm init lx-cli <project-name> <-t|--template> [Options] [--force]`)}
+  or
+  ${green(`yarn create lx-cli <project-name> <-t|--template> [Options] [--force]`)}
+
+Example: ${green(`npm init lx-cli myapp -t react-dva-ts`)}
+
+Options:\n${readCmd(config)}`;
+
 async function init() {
   const _argv0 = argv._[0];
   if (!_argv0) {
     if (argv.h || argv.help) {
-      console.log(`${magenta('[lx-cli]')} Command Help:`);
-      console.log(`\nUsage:`);
-      console.log(`  ${green(`npm init lx-cli <project-name> <-t|--template> [Options] [--force]`)}`);
-      console.log(`  or`);
-      console.log(`  ${green(`yarn create lx-cli <project-name> <-t|--template> [Options] [--force]`)}`);
-      console.log(`\nExample: ${green(`npm init lx-cli myapp -t react-dva-ts`)}`);
-      console.log(`\nOptions:\n${readCmd(config)}`);
+      console.log(cmdHelp());
     } else {
       console.log(`\n${red('Error:')}\n  See '${green('npx create-lx-cli -h')}' for more information on command.`);
     }
