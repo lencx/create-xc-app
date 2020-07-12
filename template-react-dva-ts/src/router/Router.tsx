@@ -3,6 +3,7 @@ import { Switch } from 'react-router-dom';
 
 import RouteWithSubRoutes from './RouteWithSubRoutes';
 import { RouteOption } from './types';
+export * from './types';
 
 export interface RouterProps {
   routes: RouteOption[];
@@ -17,4 +18,3 @@ const Router: React.FC<RouterProps> = ({ routes }) => {
 };
 
 export default Router;
-export { RouteOption };
