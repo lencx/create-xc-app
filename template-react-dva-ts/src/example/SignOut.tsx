@@ -10,13 +10,13 @@ export default function SignOut() {
       type: 'global/setState',
       payload: { authenticated: false },
     })
-    history.push('/example/login');
+    history.push('/login');
   }
   return (
     <div>
       <h1>SignOut Page</h1>
       <button onClick={handleOut}>SignOut</button>
-      <Link to="/example">Back To Home</Link>
+      <Link to="/">Back To Home</Link>
     </div>
   )
 }

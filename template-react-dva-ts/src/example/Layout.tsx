@@ -18,10 +18,10 @@ function Layout(props: LayoutProps) {
       <nav>
         <li>
           {authenticated
-            ? <Link to='/example/signout'> Sign Out Page </Link>
-            : <Link to='/example/login'> Login Page </Link>}
+            ? <Link to='/signout'> Sign Out Page </Link>
+            : <Link to='/login'> Login Page </Link>}
         </li>
-        <li><Link to='/example/protected'> Protected Page </Link></li>
+        <li><Link to='/protected'> Protected Page </Link></li>
       </nav>
       <div className='main'>
         <Router routes={props.routes} />
