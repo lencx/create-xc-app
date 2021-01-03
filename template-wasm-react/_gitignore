@@ -1,8 +1,7 @@
 node_modules
 .DS_Store
 dist
-*.lock
-yarn-error.log
+*.local
 
 # rust
 target/
