@@ -41,6 +41,7 @@ Available templates: default is `react-dva-ts`
 > `Vite`
 
 - `react-dva-ts`: Build apps based on React, Dvajs and TypeScript.
+- `wasm-react`: Build webAssembly apps based on React, Rust and TypeScript.
 
 > Deno
 

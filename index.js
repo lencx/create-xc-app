@@ -10,7 +10,8 @@ const config = {
   defaultTemplate: 'react-dva-ts',
   CMD: {
     Vite: {
-      'react-dva-ts': `Build apps based on React, Dvajs and TypeScript.`
+      'react-dva-ts': `Build apps based on React, Dvajs and TypeScript.`,
+      'wasm-react': `Build webAssembly apps based on React, Rust and TypeScript.`,
     },
     Deno: {
       'deno-oak': `Creating a basic web server in Deno using Oak.`,
@@ -24,7 +25,7 @@ function readCmd(conf) {
   const cmdParse = (cmds) => {
     let str = '';
     Object.keys(cmds).forEach(c => {
-      str += `\n ${magenta(`🔗 ${c}`)}`;
+      str += `\n ${magenta(`❤️ [${c}]`)}`;
       if (typeof cmds[c] === 'object') {
         Object.keys(cmds[c]).forEach(item => {
           str += cmdItem(item, cmds[c][item])
