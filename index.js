@@ -39,14 +39,14 @@ function readCmd(conf) {
 
 const cmdHelp = () => `
 Command Help:
-${magenta('[lx-cli]')}: https://github.com/lencx/create-lx-cli
+${magenta('[xc-app]')}: https://github.com/lencx/create-xc-app
 
 Usage:
-  ${green(`npm init lx-cli <project-name> <-t|--template> [Options] [--force]`)}
+  ${green(`npm init xc-app <project-name> <-t|--template> [Options] [--force]`)}
   or
-  ${green(`yarn create lx-cli <project-name> <-t|--template> [Options] [--force]`)}
+  ${green(`yarn create xc-app <project-name> <-t|--template> [Options] [--force]`)}
 
-Example: ${green(`npm init lx-cli myapp -t react-dva-ts`)}
+Example: ${green(`npm init xc-app myapp -t react-dva-ts`)}
 
 Options:\n${readCmd(config)}`;
 
@@ -56,7 +56,7 @@ async function init() {
     if (argv.h || argv.help) {
       console.log(cmdHelp());
     } else {
-      console.log(`\n${red('Error:')}\n  See '${green('npx create-lx-cli -h')}' for more information on command.`);
+      console.log(`\n${red('Error:')}\n  See '${green('npx create-xc-app -h')}' for more information on command.`);
     }
     process.exit(1);
   }

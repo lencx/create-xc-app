@@ -1,11 +1,11 @@
 {
-  "name": "create-lx-cli",
+  "name": "create-xc-app",
   "version": "1.1.3",
   "license": "MIT",
   "author": "lencx <cxin1314@gmail.com>",
   "main": "index.js",
   "bin": {
-    "create-lx-cli": "index.js",
+    "create-xc-app": "index.js",
     "clc": "index.js"
   },
   "files": [
@@ -14,12 +14,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lencx/create-lx-cli.git"
+    "url": "git+https://github.com/lencx/create-xc-app.git"
   },
   "bugs": {
-    "url": "https://github.com/lencx/create-lx-cli/issues"
+    "url": "https://github.com/lencx/create-xc-app/issues"
   },
-  "homepage": "https://github.com/lencx/create-lx-cli/tree/master/#readme",
+  "homepage": "https://github.com/lencx/create-xc-app/tree/master/#readme",
   "dependencies": {
     "chalk": "^4.1.0",
     "fs-extra": "^9.0.0",

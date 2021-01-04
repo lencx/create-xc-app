@@ -1,17 +1,17 @@
-# create-lx-cli
+# create-xc-app
 
 Create a project in seconds!
 
 ```bash
 # command help
-$ npx create-lx-cli -h
+$ npx create-xc-app -h
 ```
 
 ```bash
 # project-name: target directory
 # Options: template options
 # --force: even if the target directory is not empty, it is mandatory to create a template.
-$ npm init lx-cli <project-name> <-t|--template> [Options] [--force]
+$ npm init xc-app <project-name> <-t|--template> [Options] [--force]
 $ cd <project-name>
 # if the project has a package.json
 $ npm install # install dependencies
@@ -21,7 +21,7 @@ $ npm run dev # run project
 If using `yarn`:
 
 ```bash
-$ yarn create lx-cli <project-name> <-t|--template> [Options] [--force]
+$ yarn create xc-app <project-name> <-t|--template> [Options] [--force]
 $ cd <project-name>
 # if the project has a package.json
 $ yarn # install dependencies
@@ -31,7 +31,7 @@ $ yarn dev # run project
 If using `npx`:
 
 ```bash
-$ npx create-lx-cli <project-name> <-t|--template> [Options] [--force]
+$ npx create-xc-app <project-name> <-t|--template> [Options] [--force]
 # ...
 ```
 
@@ -55,9 +55,9 @@ Available templates: default is `react-dva-ts`
 To scaffold with specific template:
 
 ```bash
-# default template: `npm init lx-cli my-react-project`
-$ npm init lx-cli my-react-project --template react-dva-ts
-$ npm init lx-cli . --template deno-vscode-cmd --force # force
+# default template: `npm init xc-app my-react-project`
+$ npm init xc-app my-react-project --template react-dva-ts
+$ npm init xc-app . --template deno-vscode-cmd --force # force
 ```
 
 ## Related List
