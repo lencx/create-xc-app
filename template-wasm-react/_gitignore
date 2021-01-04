@@ -1,7 +1,9 @@
-node_modules
 .DS_Store
+
+node_modules
 dist
 *.local
+*.lock
 
 # rust
 target/
