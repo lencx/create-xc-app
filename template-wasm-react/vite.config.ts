@@ -1,5 +1,4 @@
 import * as reactPlugin from 'vite-plugin-react';
-// import * as rustPlugin from 'vite-plugin-rust';
 import type { UserConfig } from 'vite';
 const rustPlugin = require('vite-plugin-rust');
 import path from 'path';
@@ -15,6 +14,8 @@ const config: UserConfig = {
   plugins: [
     reactPlugin,
     // https://github.com/gliheng/vite-plugin-rust
+    // TODO: `vite build` - *.wasm files loss
+    // Temporary solutions: scripts/wasm-copy.js
     rustPlugin({
       crates: RUST_CRATE,
     }),
