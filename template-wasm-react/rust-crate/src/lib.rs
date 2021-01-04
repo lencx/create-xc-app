@@ -2,8 +2,8 @@ use wasm_bindgen::prelude::*;
 
 // Import the `window.alert` function from the Web.
 #[wasm_bindgen]
-extern {
-    pub fn alert(s: &str);
+extern "C" {
+    fn alert(s: &str);
 }
 
 // Export a `greet` function from Rust to JavaScript, that alerts a
