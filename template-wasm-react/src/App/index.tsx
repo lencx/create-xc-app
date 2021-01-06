@@ -1,7 +1,7 @@
 import React from 'react'
 import { greet } from 'rust_crate'
 import logo from './logo.svg'
-import './App.css'
+import './index.css'
 
 function App() {
   return (
