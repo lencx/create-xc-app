@@ -1,0 +1,18 @@
+<template>
+  <button @click="greet('webAssembly')">hello wasm</button>
+</template>
+
+<script lang="ts">
+import init, { greet } from 'wasm-test';
+import { defineComponent } from 'vue'
+
+// init wasm
+init();
+
+export default defineComponent({
+  name: 'HelloWasm',
+  setup: () => {
+    return { greet }
+  }
+})
+</script>
