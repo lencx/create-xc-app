@@ -16,7 +16,7 @@ function App() {
         <p>Vite + Rust + React</p>
         <p>
           <button onClick={() => greet('wasm')}>
-            hi wasm
+            hello wasm
           </button>
         </p>
         <p>

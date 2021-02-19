@@ -2,66 +2,41 @@
 
 Create a project in seconds!
 
-```bash
-# command help
-$ npx create-xc-app -h
-```
+> **Compatibility Note:**
+> Vite requires [Node.js](https://nodejs.org/en/) version >=12.0.0.
+
+With NPM:
 
 ```bash
-# project-name: target directory
-# Options: template options
-# --force: even if the target directory is not empty, it is mandatory to create a template.
-$ npm init xc-app <project-name> <-t|--template> [Options] [--force]
-$ cd <project-name>
-# if the project has a package.json
-$ npm install # install dependencies
-$ npm run dev # run project
+npm init xc-app
 ```
 
-If using `yarn`:
+With Yarn:
 
 ```bash
-$ yarn create xc-app <project-name> <-t|--template> [Options] [--force]
-$ cd <project-name>
-# if the project has a package.json
-$ yarn # install dependencies
-$ yarn dev # run project
+yarn create xc-app
 ```
 
-If using `npx`:
+Then follow the prompts!
+
+You can also directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a Vite + WebAssembly + React project, run:
 
 ```bash
-$ npx create-xc-app <project-name> <-t|--template> [Options] [--force]
-# ...
+npm init xc-app my-wasm-app --template wasm-react
 ```
 
-## Templates
+Currently supported template presets include:
 
-Available templates: default is `react-dva-ts`
-
-> `Vite`
-
-- `react-dva-ts`: Build apps based on React, Dvajs and TypeScript.
-- `wasm-react`: Build webAssembly apps based on React, Rust and TypeScript.
-- `wasm-vue`: Build webAssembly apps based on Vue3, Rust and TypeScript.
-
-> Deno
-
-- `deno-oak`: Creating a basic web server in Deno using Oak.
-- `deno-vscode-cmd`: Based `deno` and `vscode user snippets`, displaying all `"@cmd: "` commands in the project.
-  - `snippets` must contain `"@cmd: "` string
-  - the string must be in the first 10 lines of the file will be matched
-  - `$ deno run --allow-read --allow-write cmd.ts` - use cache `cmd.output`
-  - `$ deno run --allow-read --allow-write cmd.ts --update` - update `cmd.output` file
-  - `$ deno run --allow-read --allow-write cmd.ts --update=tree` - tree structure
-
-To scaffold with specific template:
-
-```bash
-# default template: `npm init xc-app my-react-project`
-$ npm init xc-app my-react-project --template react-dva-ts
-$ npm init xc-app . --template deno-vscode-cmd --force # force
-```
+* `react-dva-ts`
+* `wasm-react`
+* `wasm-vue`
+* `deno-oak`
+* `deno-vscode-cmd`: Based `deno` and `vscode user snippets`, displaying all `"@cmd: "` commands in the project.
+  * `snippets` must contain `"@cmd: "` string
+  * the string must be in the first 10 lines of the file will be matched
+  * `$ deno run --allow-read --allow-write cmd.ts` - use cache `cmd.output`
+  * `$ deno run --allow-read --allow-write cmd.ts --update` - update `cmd.output` file
+  * `$ deno run --allow-read --allow-write cmd.ts --update=tree` - tree structure
 
 ## Related List
 
@@ -77,4 +52,4 @@ $ npm init xc-app . --template deno-vscode-cmd --force # force
 
 ## License
 
-MIT
+MIT License © 2020 [lencx](https://github.com/lencx)

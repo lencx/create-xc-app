@@ -1,122 +1,197 @@
 #!/usr/bin/env node
-const path = require('path');
-const fs = require('fs-extra');
-const argv = require('minimist')(process.argv.slice(2));
-const chalk = require('chalk');
 
-const { green, red, magenta } = chalk;
+const fs = require('fs')
+const path = require('path')
+const argv = require('minimist')(process.argv.slice(2))
+const { prompt } = require('enquirer')
+const {
+  green,
+  blue,
+  bgBlue,
+  stripColors
+} = require('kolorist')
 
-const config = {
-  defaultTemplate: 'react-dva-ts',
-  CMD: {
-    Vite: {
-      'react-dva-ts': `Build apps based on React, Dvajs and TypeScript.`,
-      'wasm-react': `Build webAssembly apps based on React, Rust and TypeScript.`,
-      'wasm-vue': `Build webAssembly apps based on Vue3, Rust and TypeScript.`,
-    },
-    Deno: {
-      'deno-oak': `Creating a basic web server in Deno using Oak.`,
-      'deno-vscode-cmd': 'Based `deno` and `vscode user snippets`, displaying all `"@cmd: "` commands in the project.',
-    }
-  }
-};
+const cwd = process.cwd()
 
-function readCmd(conf) {
-  const cmdItem = (cmd, info) => `\n   ${green(cmd)}${' '.repeat(20 - cmd.length)}${info}`;
-  const cmdParse = (cmds) => {
-    let str = '';
-    Object.keys(cmds).forEach(c => {
-      str += `\n ${magenta(`❤️ [${c}]`)}`;
-      if (typeof cmds[c] === 'object') {
-        Object.keys(cmds[c]).forEach(item => {
-          str += cmdItem(item, cmds[c][item])
-        })
-      }
-      str += '\n';
-    })
-    return str;
-  }
-  return cmdParse(conf.CMD);
+const TEMPLATES = [
+  ['⬢ 🦀', green('wasm-react')],
+  ['⬢ 🦀', green('wasm-vue')],
+  ['⬢', green('react-dva-ts')],
+  ['🦕', blue('deno-oak')],
+  ['🦕', blue('deno-vscode-cmd')],
+]
+
+const renameFiles = {
+  _gitignore: '.gitignore'
 }
 
-const cmdHelp = () => `
-Command Help:
-${magenta('[xc-app]')}: https://github.com/lencx/create-xc-app
-
-Usage:
-  ${green(`npm init xc-app <project-name> <-t|--template> [Options] [--force]`)}
-  or
-  ${green(`yarn create xc-app <project-name> <-t|--template> [Options] [--force]`)}
-
-Example: ${green(`npm init xc-app myapp -t react-dva-ts`)}
-
-Options:\n${readCmd(config)}`;
-
 async function init() {
-  const _argv0 = argv._[0];
-  if (!_argv0) {
-    if (argv.h || argv.help) {
-      console.log(cmdHelp());
-    } else {
-      console.log(`\n${red('Error:')}\n  See '${green('npx create-xc-app -h')}' for more information on command.`);
+  let targetDir = argv._[0]
+  if (!targetDir) {
+    /**
+     * @type {{ name: string }}
+     */
+    const { name } = await prompt({
+      type: 'input',
+      name: 'name',
+      message: `Project name:`,
+      initial: 'xc-project'
+    })
+    targetDir = name
+  }
+
+  const root = path.join(cwd, targetDir)
+  console.log(`\nScaffolding project in ${root}...`)
+
+  if (!fs.existsSync(root)) {
+    fs.mkdirSync(root, { recursive: true })
+  } else {
+    const existing = fs.readdirSync(root)
+    if (existing.length) {
+      /**
+       * @type {{ yes: boolean }}
+       */
+      const { yes } = await prompt({
+        type: 'confirm',
+        name: 'yes',
+        initial: 'Y',
+        message:
+          `Target directory ${targetDir} is not empty.\n` +
+          `Remove existing files and continue?`
+      })
+      if (yes) {
+        emptyDir(root)
+      } else {
+        return
+      }
     }
-    process.exit(1);
-  }
-  const targetDir = _argv0 || '.';
-  const cwd = process.cwd();
-  const root = path.join(cwd, targetDir);
-  const renameFiles = {
-    _gitignore: '.gitignore',
-  };
-  console.log(`Scaffolding project in ${root}...`);
-
-  await fs.ensureDir(root);
-  const existing = await fs.readdir(root);
-
-  if (existing.length && !argv.force) {
-    console.error(`Error: target directory is not empty.`);
-    process.exit(1);
   }
 
-  const templateDir = path.join(
-    __dirname,
-    `template-${argv.t || argv.template || config.defaultTemplate}`
-  );
-  const write = async (file, content) => {
+  // determine template
+  let template = argv.t || argv.template
+  let templateSymbol = ''
+
+  const availableTemplates = TEMPLATES.map((template) => stripColors(template[1]))
+  const isValidTemplate = availableTemplates.includes(template)
+  const message = isValidTemplate
+    ? `Select a template:`
+    : `${template} isn't a valid template. Please choose from below: `
+
+  if (!template || !isValidTemplate) {
+    /**
+     * @type {{ t: string }}
+     */
+    const { t } = await prompt({
+      type: 'select',
+      name: 't',
+      message,
+      choices: TEMPLATES.map(i => i.join(' ~> '))
+    })
+
+    const temp = t.split(' ~> ')
+    template = stripColors(temp[1])
+    templateSymbol = temp[0]
+  }
+
+  const templateDir = path.join(__dirname, `template-${template}`)
+
+  const write = (file, content) => {
     const targetPath = renameFiles[file]
       ? path.join(root, renameFiles[file])
-      : path.join(root, file);
+      : path.join(root, file)
     if (content) {
-      await fs.writeFile(targetPath, content);
+      fs.writeFileSync(targetPath, content)
     } else {
-      await fs.copy(path.join(templateDir, file), targetPath);
+      copy(path.join(templateDir, file), targetPath)
     }
   }
 
-  const files = await fs.readdir(templateDir);
-  let hasPkg = false;
-  for (const file of files) {
-    if (file !== 'package.json') {
-      await write(file);
-    } else {
-      hasPkg = true;
+  const files = fs.readdirSync(templateDir)
+  for (const file of files.filter((f) => f !== 'package.json')) {
+    write(file)
+  }
+
+  const cmdCd = () => {
+    console.log(`\nDone. Now run:\n`)
+    if (root !== cwd) {
+      console.log(`  cd ${path.relative(cwd, root)}`)
     }
   }
 
-  console.log(`\n✨Done!`);
-  if (root !== cwd && !/^\.\/?$/.test(targetDir)) {
-    console.log(`\nNow Run:\n$ ${green(`cd ${path.relative(cwd, root)}`)}`);
-  }
-  if (hasPkg) {
-    const pkg = require(path.join(templateDir, `package.json`));
-    pkg.name = path.basename(root);
-    await write('package.json', JSON.stringify(pkg, null, 2));
+  if (templateSymbol.indexOf('⬢') >= 0) {
+    const pkg = require(path.join(templateDir, `package.json`))
+    pkg.name = path.basename(root)
+    write('package.json', JSON.stringify(pkg, null, 2))
 
-    console.log(`$ ${green('npm install')} (or ${green('yarn')})`);
-    console.log(`$ ${green('npm run dev')} (or ${green('yarn dev')})\n`);
+    cmdCd()
+    cmdNode()
+
+    if (templateSymbol.indexOf('🦀') >= 0) {
+      wasmLink()
+    }
+    return
+  }
+
+  cmdCd()
+
+  if (/wasm|react|vue/.test(template)) {
+    cmdNode()
+    if (/wasm/.test(template)) {
+      wasmLink()
+    }
+  }
+}
+
+function cmdNode() {
+  const pkgManager = /yarn/.test(process.env.npm_execpath) ? 'yarn' : 'npm'
+  console.log(`  ${pkgManager === 'yarn' ? `yarn` : `npm install`}`)
+  console.log(`  ${pkgManager === 'yarn' ? `yarn dev` : `npm run dev`}`)
+  console.log()
+}
+
+function wasmLink() {
+  console.log(bgBlue(` [Rust]: https://www.rust-lang.org `))
+  console.log(bgBlue(` [wasm-pack]: https://github.com/rustwasm/wasm-pack `))
+  console.log(bgBlue(` [learn-wasm]: https://github.com/lencx/learn-wasm `))
+  console.log(bgBlue(` [vite-plugin-rsw]: https://github.com/lencx/vite-plugin-rsw `))
+  console.log(bgBlue(` [Awesome WebAssembly]: https://mtc.nofwl.com/awesome/wasm.html `))
+  console.log()
+}
+
+function copy(src, dest) {
+  const stat = fs.statSync(src)
+  if (stat.isDirectory()) {
+    copyDir(src, dest)
+  } else {
+    fs.copyFileSync(src, dest)
+  }
+}
+
+function copyDir(srcDir, destDir) {
+  fs.mkdirSync(destDir, { recursive: true })
+  for (const file of fs.readdirSync(srcDir)) {
+    const srcFile = path.resolve(srcDir, file)
+    const destFile = path.resolve(destDir, file)
+    copy(srcFile, destFile)
+  }
+}
+
+function emptyDir(dir) {
+  if (!fs.existsSync(dir)) {
+    return
+  }
+  for (const file of fs.readdirSync(dir)) {
+    const abs = path.resolve(dir, file)
+    // baseline is Node 12 so can't use rmSync :(
+    if (fs.lstatSync(abs).isDirectory()) {
+      emptyDir(abs)
+      fs.rmdirSync(abs)
+    } else {
+      fs.unlinkSync(abs)
+    }
   }
 }
 
 init().catch((e) => {
-  console.error(e);
+  console.error(e)
 })

@@ -6,12 +6,11 @@
 import init, { greet } from 'wasm-test';
 import { defineComponent } from 'vue'
 
-// init wasm
-init();
-
 export default defineComponent({
   name: 'HelloWasm',
   setup: () => {
+    // init wasm
+    init();
     return { greet }
   }
 })
