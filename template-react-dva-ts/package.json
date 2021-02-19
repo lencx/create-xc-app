@@ -6,8 +6,8 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
-    "@pika/react": "^16.13.1",
-    "@pika/react-dom": "^16.13.1",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "dva": "^2.6.0-beta.20",
     "dva-core": "^2.0.2",
     "dva-loading": "^3.0.20",
@@ -16,10 +16,10 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
-    "@types/react": "^16.9.35",
-    "@types/react-dom": "^16.9.8",
-    "typescript": "^3.9.3",
-    "vite": "^1.0.0-beta.10",
-    "vite-plugin-react": "^3.0.0"
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@vitejs/plugin-react-refresh": "^1.3.1",
+    "typescript": "^4.1.3",
+    "vite": "^2.0.1"
   }
 }

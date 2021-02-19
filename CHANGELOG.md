@@ -1,11 +1,15 @@
 # CHANGELOG
 
+## 2.2.1 (2021-02-19)
+
+* upgrade dependency
+
 ## 2.2.0 (2021-02-17)
 
 #### Features
 
 * add template-wasm-vue
-* update dependencies
+* upgrade dependency
 
 ## 2.1.0 (2021-01-20)
 

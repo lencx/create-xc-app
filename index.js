@@ -12,6 +12,7 @@ const config = {
     Vite: {
       'react-dva-ts': `Build apps based on React, Dvajs and TypeScript.`,
       'wasm-react': `Build webAssembly apps based on React, Rust and TypeScript.`,
+      'wasm-vue': `Build webAssembly apps based on Vue3, Rust and TypeScript.`,
     },
     Deno: {
       'deno-oak': `Creating a basic web server in Deno using Oak.`,

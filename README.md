@@ -38,10 +38,12 @@ $ npx create-xc-app <project-name> <-t|--template> [Options] [--force]
 ## Templates
 
 Available templates: default is `react-dva-ts`
+
 > `Vite`
 
 - `react-dva-ts`: Build apps based on React, Dvajs and TypeScript.
 - `wasm-react`: Build webAssembly apps based on React, Rust and TypeScript.
+- `wasm-vue`: Build webAssembly apps based on Vue3, Rust and TypeScript.
 
 > Deno
 

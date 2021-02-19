@@ -1,6 +1,6 @@
 {
   "name": "create-xc-app",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "license": "MIT",
   "author": "lencx <cxin1314@gmail.com>",
   "main": "index.js",
@@ -11,6 +11,16 @@
   "files": [
     "index.js",
     "template-*"
+  ],
+  "keywords": [
+    "rsw",
+    "wasm",
+    "vite",
+    "deno",
+    "xc-app",
+    "wasm-vue",
+    "wasm-react",
+    "webAssembly"
   ],
   "repository": {
     "type": "git",
