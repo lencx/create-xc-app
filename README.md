@@ -72,6 +72,8 @@ $ npm init xc-app . --template deno-vscode-cmd --force # force
 - [Vite](https://github.com/vitejs/vite): Native-ESM powered web dev build tool. It's fast.
 - [VS Code User Snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets): Code snippets are templates that make it easier to enter repeating code patterns, such as loops or conditional-statements.
 - [vite-plugin-rsw](https://github.com/lencx/vite-plugin-rsw): wasm-pack plugin for vite@v2.
+- [WebAssembly入门](https://mtc.nofwl.com/tech/post/wasm-start.html)
+- [Awesome WebAssembly](https://mtc.nofwl.com/awesome/wasm.html)
 
 ## License
 
