@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.3.1 (2021-02-20)
+
+### Bug Fixes
+
+* update prompt message based on user input
+
 ## 2.3.0 (2021-02-20)
 
 ### Features
