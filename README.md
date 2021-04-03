@@ -40,15 +40,15 @@ Currently supported template presets include:
 
 ## Related List
 
-- [🦕 Deno](https://deno.land): A secure runtime for JavaScript and TypeScript.
-- [🦕 Oak](https://github.com/oakserver/oak): A middleware framework for Deno's net server.
-- [🦕 deno-getfiles](https://github.com/lencx/deno-getfiles): Recursively get all files in a directory
-- [Dvajs](https://github.com/dvajs/dva): React and redux based, lightweight and elm-style framework.
-- [Vite](https://github.com/vitejs/vite): Native-ESM powered web dev build tool. It's fast.
-- [VS Code User Snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets): Code snippets are templates that make it easier to enter repeating code patterns, such as loops or conditional-statements.
-- [vite-plugin-rsw](https://github.com/lencx/vite-plugin-rsw): wasm-pack plugin for vite@v2.
-- [WebAssembly入门](https://mtc.nofwl.com/tech/post/wasm-start.html)
-- [Awesome WebAssembly](https://mtc.nofwl.com/awesome/wasm.html)
+* [vite-plugin-rsw](https://github.com/lencx/vite-plugin-rsw): wasm-pack plugin for vite@v2.
+* [WebAssembly入门](https://lencx.github.io/book/wasm/rust_wasm_frontend.html)
+* [Awesome WebAssembly](https://lencx.github.io/book/awesome/wasm.html)
+* [🦕 Deno](https://deno.land): A secure runtime for JavaScript and TypeScript.
+* [🦕 Oak](https://github.com/oakserver/oak): A middleware framework for Deno's net server.
+* [🦕 deno-getfiles](https://github.com/lencx/deno-getfiles): Recursively get all files in a directory
+* [Dvajs](https://github.com/dvajs/dva): React and redux based, lightweight and elm-style framework.
+* [Vite](https://github.com/vitejs/vite): Native-ESM powered web dev build tool. It's fast.
+* [VS Code User Snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets): Code snippets are templates that make it easier to enter repeating code patterns, such as loops or conditional-statements.
 
 ## License
 
