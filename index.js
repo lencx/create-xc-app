@@ -40,6 +40,7 @@ async function init() {
     targetDir = name
   }
 
+  const pkgName = await getValidPackageName(targetDir)
   const root = path.join(cwd, targetDir)
   console.log(`\nScaffolding project in ${root}...`)
 
@@ -123,7 +124,7 @@ async function init() {
 
   if (templateSymbol.indexOf('⬢') >= 0) {
     const pkg = require(path.join(templateDir, `package.json`))
-    pkg.name = path.basename(root)
+    pkg.name = pkgName;
     write('package.json', JSON.stringify(pkg, null, 2))
 
     cmdCd()
@@ -157,7 +158,8 @@ function wasmLink() {
   console.log(bgBlue(` [wasm-pack]: https://github.com/rustwasm/wasm-pack `))
   console.log(bgBlue(` [learn-wasm]: https://github.com/lencx/learn-wasm `))
   console.log(bgBlue(` [vite-plugin-rsw]: https://github.com/lencx/vite-plugin-rsw `))
-  console.log(bgBlue(` [Awesome WebAssembly]: https://mtc.nofwl.com/awesome/wasm.html `))
+  console.log(bgBlue(` [Awesome WebAssembly]: https://lencx.github.io/book/awesome/wasm.html `))
+  console.log(bgBlue(` [WebAssembly入门]: https://lencx.github.io/book/wasm/rust_wasm_frontend.html `))
   console.log()
 }
 
@@ -192,6 +194,33 @@ function emptyDir(dir) {
     } else {
       fs.unlinkSync(abs)
     }
+  }
+}
+
+async function getValidPackageName(projectName) {
+  const packageNameRegExp = /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/
+  if (packageNameRegExp.test(projectName)) {
+    return projectName
+  } else {
+    const suggestedPackageName = projectName
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/^[._]/, '')
+      .replace(/[^a-z0-9-~]+/g, '-')
+
+    /**
+     * @type {{ inputPackageName: string }}
+     */
+    const { inputPackageName } = await prompt({
+      type: 'input',
+      name: 'inputPackageName',
+      message: `Package name:`,
+      initial: suggestedPackageName,
+      validate: (input) =>
+        packageNameRegExp.test(input) ? true : 'Invalid package.json name'
+    })
+    return inputPackageName
   }
 }
 
