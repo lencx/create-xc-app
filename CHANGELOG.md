@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.3.3 (2021-04-05)
+
+* upgrade dependency
+
 ## 2.3.2 (2021-04-03)
 
 * upgrade dependency
