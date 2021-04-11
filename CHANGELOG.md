@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.3.4 (2021-04-11)
+
+* upgrade dependency
+* add awesome-rsw
+
 ## 2.3.3 (2021-04-05)
 
 * upgrade dependency

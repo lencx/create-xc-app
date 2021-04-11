@@ -156,6 +156,7 @@ function cmdNode() {
 function wasmLink() {
   console.log(bgBlue(` [Rust]: https://www.rust-lang.org `))
   console.log(bgBlue(` [wasm-pack]: https://github.com/rustwasm/wasm-pack `))
+  console.log(bgBlue(` [awesome-rsw]: https://github.com/lencx/awesome-rsw `))
   console.log(bgBlue(` [learn-wasm]: https://github.com/lencx/learn-wasm `))
   console.log(bgBlue(` [vite-plugin-rsw]: https://github.com/lencx/vite-plugin-rsw `))
   console.log(bgBlue(` [Awesome WebAssembly]: https://lencx.github.io/book/awesome/wasm.html `))
