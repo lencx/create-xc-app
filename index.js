@@ -2,7 +2,6 @@
 
 const fs = require('fs')
 const path = require('path')
-const chalk = require('chalk')
 const argv = require('minimist')(process.argv.slice(2))
 const { prompt } = require('enquirer')
 const {
@@ -27,9 +26,6 @@ const renameFiles = {
 }
 
 async function init() {
-  const pkgJson = fs.readFileSync('./package.json', { encoding: 'utf-8' })
-  console.log(`${chalk.bold('xc-app')} ${chalk.gray(JSON.parse(pkgJson).version)}\n`)
-
   let targetDir = argv._[0]
   if (!targetDir) {
     /**
