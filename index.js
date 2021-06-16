@@ -10,12 +10,13 @@ const {
   bgBlue,
   stripColors
 } = require('kolorist')
+const chalk = require('chalk');
 
 const cwd = process.cwd()
 
 const TEMPLATES = [
-  ['⬢ 🦀', green('wasm-react')],
-  ['⬢ 🦀', green('wasm-vue')],
+  ['⬢🦀', green('wasm-react')],
+  ['⬢🦀', green('wasm-vue')],
   ['⬢', green('react-dva-ts')],
   ['🦕', blue('deno-oak')],
   ['🦕', blue('deno-vscode-cmd')],
@@ -26,6 +27,9 @@ const renameFiles = {
 }
 
 async function init() {
+  const pkgJson = fs.readFileSync('./package.json', { encoding: 'utf-8' })
+  console.log(`${chalk.bold('xc-app')} ${chalk.gray(JSON.parse(pkgJson).version)}\n`)
+
   let targetDir = argv._[0]
   if (!targetDir) {
     /**

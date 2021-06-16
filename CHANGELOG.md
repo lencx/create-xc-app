@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.4.1 (2021-06-16)
+
+* upgrade dependency (rsw 1.6.2)
+* add xc-app version
+
 ## 2.4.0 (2021-06-16)
 
 * upgrade dependency (rsw 1.6.1)
