@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const path = require('path')
+const chalk = require('chalk')
 const argv = require('minimist')(process.argv.slice(2))
 const { prompt } = require('enquirer')
 const {
@@ -10,7 +11,6 @@ const {
   bgBlue,
   stripColors
 } = require('kolorist')
-const chalk = require('chalk');
 
 const cwd = process.cwd()
 

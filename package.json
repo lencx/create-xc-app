@@ -1,6 +1,6 @@
 {
   "name": "create-xc-app",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "license": "MIT",
   "author": "lencx <cxin1314@gmail.com>",
   "main": "index.js",
@@ -35,11 +35,9 @@
   },
   "homepage": "https://github.com/lencx/create-xc-app/tree/master/#readme",
   "dependencies": {
+    "chalk": "^4.1.1",
     "enquirer": "^2.3.6",
     "kolorist": "^1.2.10",
     "minimist": "^1.2.5"
-  },
-  "devDependencies": {
-    "chalk": "^4.1.1"
   }
 }
