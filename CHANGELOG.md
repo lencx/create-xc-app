@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.4.5 (2021-06-18)
+
+* add rsw-node
+
 ## 2.4.1 (2021-06-16)
 
 * upgrade dependency (rsw 1.6.2)

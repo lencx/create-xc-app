@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "rsw:deploy": "rsw && npm run build"
   },
   "dependencies": {
     "vue": "^3.0.5"
@@ -12,6 +13,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.1",
+    "rsw-node": "^0.1.2",
     "typescript": "^4.3.2",
     "vite": "^2.3.7",
     "vite-plugin-rsw": "^1.6.2",
