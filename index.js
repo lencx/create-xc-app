@@ -7,15 +7,17 @@ const { prompt } = require('enquirer')
 const {
   green,
   blue,
+  yellow,
+  gray,
   stripColors
 } = require('kolorist')
 
 const cwd = process.cwd()
 
 const TEMPLATES = [
-  ['🕸', green('wasm-react')],
-  ['🕸', green('wasm-vue')],
-  ['⬢', green('react-dva-ts')],
+  ['🦀', yellow('wasm-react')],
+  ['🦀', yellow('wasm-vue')],
+  ['⬢ ', green('react-dva-ts')],
   ['🦕', blue('deno-oak')],
   ['🦕', blue('deno-vscode-cmd')],
 ]
@@ -121,7 +123,7 @@ async function init() {
     }
   }
 
-  if (['⬢', '🕸'].includes(templateSymbol)) {
+  if (['⬢ ', '🦀'].includes(templateSymbol)) {
     const pkg = require(path.join(templateDir, `package.json`))
     pkg.name = pkgName
     write('package.json', JSON.stringify(pkg, null, 2))
@@ -129,7 +131,7 @@ async function init() {
     cmdCd()
     cmdNode()
 
-    if (['🕸'].includes(templateSymbol)) {
+    if (['🦀'].includes(templateSymbol)) {
       wasmLink()
     }
     return
@@ -153,14 +155,15 @@ function cmdNode() {
 }
 
 function wasmLink() {
-  console.log(` [Rust]: https://www.rust-lang.org `)
-  console.log(` [wasm-pack]: https://github.com/rustwasm/wasm-pack `)
-  console.log(` [vite-plugin-rsw]: https://github.com/lencx/vite-plugin-rsw `)
-  console.log(` [rsw-node]: https://github.com/lencx/rsw-node `)
-  console.log(` [learn-wasm]: https://github.com/lencx/learn-wasm `)
-  console.log(` [awesome-rsw]: https://github.com/lencx/awesome-rsw `)
-  console.log(` [Awesome WebAssembly]: https://lencx.github.io/book/awesome/wasm.html `)
-  console.log(` [WebAssembly入门]: https://lencx.github.io/book/wasm/rust_wasm_frontend.html `)
+  console.log(gray('---------------------------------------'))
+  console.log(gray(` [Rust]: https://www.rust-lang.org `))
+  console.log(gray(` [wasm-pack]: https://github.com/rustwasm/wasm-pack `))
+  console.log(gray(` [vite-plugin-rsw]: https://github.com/lencx/vite-plugin-rsw `))
+  console.log(gray(` [rsw-node]: https://github.com/lencx/rsw-node `))
+  console.log(gray(` [learn-wasm]: https://github.com/lencx/learn-wasm `))
+  console.log(gray(` [awesome-rsw]: https://github.com/lencx/awesome-rsw `))
+  console.log(gray(` [Awesome WebAssembly]: https://lencx.github.io/book/awesome/wasm.html `))
+  console.log(gray(` [WebAssembly入门]: https://lencx.github.io/book/wasm/rust_wasm_frontend.html `))
   console.log()
 }
 

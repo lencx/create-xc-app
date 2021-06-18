@@ -22,7 +22,11 @@ Then follow the prompts!
 You can also directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a Vite + WebAssembly + React project, run:
 
 ```bash
+# npm 6.x
 npm init xc-app my-wasm-app --template wasm-react
+
+# npm 7+, extra double-dash is needed:
+npm init xc-app my-wasm-app -- --template wasm-react
 ```
 
 Currently supported template presets include:
