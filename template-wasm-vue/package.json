@@ -16,7 +16,7 @@
     "rsw-node": "^0.1.2",
     "typescript": "^4.3.2",
     "vite": "^2.3.7",
-    "vite-plugin-rsw": "^1.6.2",
+    "vite-plugin-rsw": "^1.6.3",
     "vue-tsc": "^0.0.24"
   }
 }

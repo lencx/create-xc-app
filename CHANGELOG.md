@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.4.6 (2021-06-19)
+
+### Bug Fixes
+
+* no package.json in generated project (#1)
+
 ## 2.4.5 (2021-06-18)
 
 * add rsw-node
