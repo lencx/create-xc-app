@@ -111,11 +111,6 @@ async function init() {
     }
   }
 
-  const files = fs.readdirSync(templateDir)
-  for (const file of files.filter((f) => f !== 'package.json')) {
-    write(file)
-  }
-
   const cmdCd = () => {
     console.log(`\nDone. Now run:\n`)
     if (root !== cwd) {
@@ -123,26 +118,21 @@ async function init() {
     }
   }
 
-  if (['⬢ ', '🦀'].includes(templateSymbol)) {
-    const pkg = require(path.join(templateDir, `package.json`))
-    pkg.name = pkgName
-    write('package.json', JSON.stringify(pkg, null, 2))
+  const files = fs.readdirSync(templateDir)
+  for (const file of files) {
+    write(file)
 
-    cmdCd()
-    cmdNode()
+    if (file === 'package.json') {
+      const pkg = require(path.join(templateDir, `package.json`))
+      pkg.name = pkgName
+      write('package.json', JSON.stringify(pkg, null, 2))
 
-    if (['🦀'].includes(templateSymbol)) {
-      wasmLink()
-    }
-    return
-  }
+      cmdCd()
+      cmdNode()
 
-  cmdCd()
-
-  if (/wasm|react|vue/.test(template)) {
-    cmdNode()
-    if (/wasm/.test(template)) {
-      wasmLink()
+      if (['🦀'].includes(templateSymbol) || /wasm-/.test(template)) {
+        wasmLink()
+      }
     }
   }
 }
