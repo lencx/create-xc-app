@@ -145,16 +145,16 @@ function cmdNode() {
 }
 
 function wasmLink() {
-  console.log(gray('---------------------------------------'))
-  console.log(gray(` [Rust]: https://www.rust-lang.org `))
-  console.log(gray(` [wasm-pack]: https://github.com/rustwasm/wasm-pack `))
-  console.log(gray(` [vite-plugin-rsw]: https://github.com/lencx/vite-plugin-rsw `))
-  console.log(gray(` [rsw-node]: https://github.com/lencx/rsw-node `))
-  console.log(gray(` [learn-wasm]: https://github.com/lencx/learn-wasm `))
-  console.log(gray(` [awesome-rsw]: https://github.com/lencx/awesome-rsw `))
-  console.log(gray(` [Awesome WebAssembly]: https://lencx.github.io/book/awesome/wasm.html `))
-  console.log(gray(` [WebAssembly入门]: https://lencx.github.io/book/wasm/rust_wasm_frontend.html `))
-  console.log()
+  console.log(gray(`---------------------------------------
+[Rust]: https://www.rust-lang.org
+[wasm-pack]: https://github.com/rustwasm/wasm-pack
+[vite-plugin-rsw]: https://github.com/lencx/vite-plugin-rsw
+[rsw-node]: https://github.com/lencx/rsw-node
+[learn-wasm]: https://github.com/lencx/learn-wasm
+[awesome-rsw]: https://github.com/lencx/awesome-rsw
+[Awesome WebAssembly]: https://lencx.github.io/book/awesome/wasm.html
+[WebAssembly入门]: https://lencx.github.io/book/wasm/rust_wasm_frontend.html
+`))
 }
 
 function copy(src, dest) {
