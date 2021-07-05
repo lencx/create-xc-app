@@ -1,5 +1,7 @@
 # wasm-vue
 
+[WebAssembly Series](https://github.com/lencx/fzj/discussions/22)
+
 ## Quick Start
 
 ### Step1
