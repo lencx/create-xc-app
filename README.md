@@ -46,7 +46,7 @@ Currently supported template presets include:
 
 * [vite-plugin-rsw](https://github.com/lencx/vite-plugin-rsw): wasm-pack plugin for vite@v2.
 * [WebAssembly入门](https://lencx.github.io/book/wasm/rust_wasm_frontend.html)
-* [Awesome WebAssembly](https://lencx.github.io/book/awesome/wasm.html)
+* [WebAssembly Series](https://github.com/lencx/z/discussions/22)
 * [🦕 Deno](https://deno.land): A secure runtime for JavaScript and TypeScript.
 * [🦕 Oak](https://github.com/oakserver/oak): A middleware framework for Deno's net server.
 * [🦕 deno-getfiles](https://github.com/lencx/deno-getfiles): Recursively get all files in a directory
