@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import init, { greet } from 'wasm-test';
 import { defineComponent } from 'vue'
+import init, { greet } from 'wasm-test';
 
 export default defineComponent({
   name: 'HelloWasm',

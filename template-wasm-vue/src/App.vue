@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello WebAssembly + Vue 3 + Vite" />
+  <HelloWorld msg="Hello WebAssembly + Vue 3 + TypeScript + Vite" />
   <HelloWasm />
 </template>
 
