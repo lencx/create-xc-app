@@ -152,7 +152,7 @@ function wasmLink() {
 [rsw-node]: https://github.com/lencx/rsw-node
 [learn-wasm]: https://github.com/lencx/learn-wasm
 [awesome-rsw]: https://github.com/lencx/awesome-rsw
-[WebAssembly Series](https://github.com/lencx/fzj/discussions/22)
+[WebAssembly Series](https://github.com/lencx/z/discussions/22)
 `))
 }
 

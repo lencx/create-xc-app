@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.4.10 (2021-07-22)
+
+* upgrade dependency (rsw 1.8.0)
+
 ## 2.4.9 (2021-07-06)
 
 * upgrade dependency (rsw 1.6.4)
