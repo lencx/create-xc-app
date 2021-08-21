@@ -1,6 +1,9 @@
 # wasm-react
 
-[WebAssembly Series](https://github.com/lencx/z/discussions/22)
+- [WebAssembly Series](https://github.com/lencx/z/discussions/22)
+- [learn-wasm](https://github.com/lencx/learn-wasm)
+- [vite-plugin-rsw](https://github.com/lencx/vite-plugin-rsw) - 🦀 wasm-pack plugin for Vite
+- [rsw-node](https://github.com/lencx/rsw-node) - ⚪️ `wasm-pack build` executed in remote deployment
 
 ## Quick Start
 
@@ -32,22 +35,6 @@ npm run dev
 
 ## Remote Deployment
 
-### Step1
-
-edit `.rswrc.json`
-
-```json
-{
-  "root": ".",
-  "crates": [
-    // https://github.com/lencx/rsw-node#step2
-    "wasm-test" // same as `vite.config.ts`
-  ]
-}
-```
-
-### Step2
-
 ```bash
-npm run rsw:deploy
+npm run rsw:build
 ```
