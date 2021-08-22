@@ -8,4 +8,5 @@ dist
 # rust
 target/
 Cargo.lock
-# pkg/
+pkg/
+/.rsw

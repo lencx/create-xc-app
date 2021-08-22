@@ -127,21 +127,22 @@ async function init() {
       pkg.name = pkgName
       write('package.json', JSON.stringify(pkg, null, 2))
 
-      cmdCd()
-      cmdNode()
+      const isWasm = ['🦀'].includes(templateSymbol) || /wasm-/.test(template)
 
-      if (['🦀'].includes(templateSymbol) || /wasm-/.test(template)) {
-        wasmLink()
-      }
+      cmdCd()
+      cmdNode(isWasm)
     }
   }
 }
 
-function cmdNode() {
+function cmdNode(isWasm) {
   const pkgManager = /yarn/.test(process.env.npm_execpath) ? 'yarn' : 'npm'
+
   console.log(`  ${pkgManager === 'yarn' ? `yarn` : `npm install`}`)
   console.log(`  ${pkgManager === 'yarn' ? `yarn dev` : `npm run dev`}`)
+  isWasm && console.log(`  ${pkgManager === 'yarn' ? `yarn rsw:build` : `npm run rsw:build`}`)
   console.log()
+  isWasm && wasmLink()
 }
 
 function wasmLink() {

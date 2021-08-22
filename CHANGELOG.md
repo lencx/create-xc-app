@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.4.12 (2021-08-22)
+
+* ignore the `.rsw/` directory
+
 ## 2.4.11 (2021-08-22)
 
 * upgrade dependency (rsw 1.9.0)
